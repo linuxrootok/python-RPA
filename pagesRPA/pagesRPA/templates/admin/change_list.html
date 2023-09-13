@@ -1,0 +1,24 @@
+{% extends "admin/change_list.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <style>
+        .row-color-red {
+            background-color: #FF8888;
+        }
+
+        .row-color-orange {
+            background: #FFC888;
+        }
+
+        .row-color-green {
+            background-color: #88FF88;
+        }
+    </style>
+{% endblock %}
+
+{% block result_row %}
+    {% for obj in results %}
+
+    {% endfor %}
+{% endblock %}

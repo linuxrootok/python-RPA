@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load i18n admin_urls %}
+
+{% block content %}
+  <div class="submit-row">
+    <form method="post" action="update_offset">{% csrf_token %}
+      {% for field in form %}
+        <div class="fieldWrapper">
+          {{ field.errors }}
+          {{ field.label_tag }} {{ field }}
+        </div>
+      {% endfor %}
+      <input type="hidden" name="ids" value="{{ids}}" class="default" />
+      <input type="hidden" name="filters" value="{{filters}}" class="default" />
+      <input type="submit" name="submit" value="Update" class="default" />
+      <a href="{% url 'admin:pagesRPA_element_changelist' %}" class="cancel-link">Cancel</a>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector("#id_my_field").focus();
+    });
+  </script>
+
+{% endblock %}

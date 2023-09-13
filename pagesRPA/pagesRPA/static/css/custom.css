@@ -1,0 +1,14 @@
+<style>
+    .row-color-red {
+        background-color: #FF8888;
+    }
+
+    .row-color-orange {
+        background-color: #FFC888;
+        color: #FFC888;
+    }
+
+    .row-color-green {
+        background-color: #88FF88;
+    }
+</style>

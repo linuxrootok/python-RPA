@@ -1,0 +1,6 @@
+<form method="post" action="update_test">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="action" id="action" value="update_test2" />
+    <input type="submit" value="Submit" />
+</form>
