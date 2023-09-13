@@ -1,0 +1,3 @@
+[console_scripts]
+syncProjects = bin.my_command:getData
+

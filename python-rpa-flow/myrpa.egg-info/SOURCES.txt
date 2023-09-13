@@ -1,0 +1,8 @@
+README.md
+setup.py
+bin/my_command.py
+myrpa.egg-info/PKG-INFO
+myrpa.egg-info/SOURCES.txt
+myrpa.egg-info/dependency_links.txt
+myrpa.egg-info/entry_points.txt
+myrpa.egg-info/top_level.txt

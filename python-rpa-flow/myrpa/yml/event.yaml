@@ -1,0 +1,28 @@
+# event.yaml
+url: https://example.com
+actions:
+  - type: input
+    selector: '#kw'
+    text: 'myusername'
+  - type: input
+    selector: '#password'
+    selector_type: xpath
+    text: 'mypassword'
+  - type: runjs
+    script: 'document.getElementById("login").style.display = "none";'
+  - type: if
+    condition:
+      selector: '#remember_me'
+      property: 'checked'
+      value: false
+    then:
+      - type: click
+        selector: '#remember_me'
+    else:
+      - type: click
+        selector: '#forgot_password'
+  - type: upload
+    selector: '#profile_picture'
+    file: '/path/to/profile_picture.jpg'
+  - type: click
+    selector: '#submit'

@@ -1,0 +1,7 @@
+#url: https://www.baidu.com
+actions:
+  - type: click
+    selector: '//*[@id="app"]/div/div[1]/div[2]/div[1]'
+    selector_type: xpath
+    mark: 'D4'
+    desc: '444'

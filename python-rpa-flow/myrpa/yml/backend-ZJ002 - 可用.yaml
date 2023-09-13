@@ -1,0 +1,313 @@
+#url: https://www.baidu.com
+actions:
+  - type: runjs
+    script: 'location.reload();'
+    mark: 'D3'
+    desc: '333'
+
+  - type: click #点击[返回]
+    selector: '/html/body/div/div/div[1]/div[2]/div[1]'
+    selector_type: xpath
+    mark: 'D4'
+    desc: '444'
+
+  #- type: navigator #导航
+    #url: 'http://jiuxiang.9xsmart.com/?code=g5xI11#/home/index'
+    #mark: 'D5'
+    #desc: '55'
+
+  - type: click #点击[后台管理]
+    selector: '//*[@id="app"]/div/div[1]/div[1]/div[3]/i[2]'
+    selector_type: xpath
+    mark: 'D6'
+    desc: '666'
+
+  - type: click #点击[劳务管理]
+    selector: '//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div/div[1]/div/div[1]/div[2]/div[3]/div/div/div/div/i'
+    selector_type: xpath
+    mark: 'D7'
+    desc: '777'
+
+
+  - type: click #点击[人员管理]
+    selector: '//*[@id="app"]/div/div[1]/div/div[1]/div[2]/div/div[1]/div/ul/div[2]/li'
+    selector_type: xpath
+    mark: 'D8'
+    desc: '888'
+
+  - type: input #点击[搜索框]
+    selector: '//*[@id="pane-1"]/div/div[2]/div/div[8]/input'
+    selector_type: xpath
+    text: '{{idcard}}'
+    mark: 'D9'
+    desc: '999'
+
+
+  - type: click #点击[搜索放大镜图案]
+    selector: '//*[@id="pane-1"]/div/div[2]/div/div[8]/div/button/i'
+    selector_type: xpath
+    mark: 'D10'
+    desc: '1000'
+
+  #- type: if
+    #condition:
+      #selector: '//*[@id="pane-1"]/div/div[4]/span[1]'
+      #selector_type: xpath
+      #property: 'textContent'
+      #value: '共 1 条'
+  - type: if
+    condition:
+      selector: '//*[@id="pane-1"]/div/div[3]/div[3]/table/tbody/tr'
+      #//*[@id="pane-1"]/div/div[3]/div[3]/div
+      selector_type: xpath
+      property: 'className'
+      value: 'el-table__row'
+    then:
+      - type: click
+        selector: '/html/body/div/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[3]/div[3]/table/tbody/tr/td[2]/div/label/span/span'
+        selector_type: xpath
+        mark: 'D11'
+        desc: '1100'
+        stop: true
+
+  - type: click
+    selector: '//*[@id="pane-1"]/div/div[1]/div/div/button[2]/span'
+    selector_type: xpath
+    mark: 'D12'
+    desc: '1200'
+
+  # 基本信息区域
+  - type: input #输入身份证
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[2]/div[1]/div[1]/div/div[1]/input'
+    selector_type: xpath
+    text: '{{idcard}}'
+    mark: 'M1'
+    desc: '输入[身份证号]'
+
+  - type: input #输入姓名
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[2]/div[2]/div[1]/div/div[1]/input'
+    selector_type: xpath
+    text: '{{name}}'
+    mark: 'M2'
+    desc: '输入[姓名]'
+
+  - type: input #输入[年龄]
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[2]/div[2]/div[2]/div/div/input'
+    selector_type: xpath
+    text: '{{age}}'
+    mark: 'M3'
+    desc: '输入[年龄]'
+
+  - type: click #点击选择地址[省]
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[2]/div[2]/div[4]/div/div[1]/div[1]/div/div/input'
+    selector_type: xpath
+    mark: 'E2'
+    desc: '选择地址[省]'
+
+  - type: click #选择地址[省]
+    selector: '/html/body/div[3]/div[1]/div[1]/ul/li/*[contains(text(), "{{province}}")]'
+    selector_type: xpath
+    mark: 'E3'
+    desc: '选择地址[省]'
+
+  # 上传身份图片区域
+  - type: runjs
+    script: document.evaluate('//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[1]/div', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView();
+
+  - type: input #输入[发证机关]
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[2]/div[1]/div[4]/div/div/input'
+    selector_type: xpath
+    text: '{{issuingAuthority}}'
+    mark: 'M4'
+    desc: '输入[发证机关]'
+
+  - type: upload
+    selector: '/html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[1]/div/div/div/div[1]/div/div/input'
+
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[近照]'
+
+  - type: upload
+    selector: '/html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[2]/div/div/div/div[1]/div/div/input'
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[身份证照]'
+
+  - type: upload
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[3]/div/div/div/div[1]/div/div/input'
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[身份证正面]'
+
+  - type: upload
+    selector: '/html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[4]/div/div/div/div[1]/div/div/input'
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[身份证反面]'
+
+  - type: upload
+    selector: '/html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[5]/div/div/div/div[1]/div/div/input'
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[指纹]'
+
+  - type: upload
+    selector: '/html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[6]/div/div/div/div[1]/div/div/input'
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[签名扫描件]'
+
+  - type: upload
+    selector: '/html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div[5]/div/div[2]/div/div[1]/div/form/div[3]/div[7]/div/div/div/div[1]/div/div/input'
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\lei.jpg'
+    mark: 'P1'
+    desc: '上传[银行卡照片]'
+
+
+  - type: click
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[5]/div[2]/div[1]/div/div/div/input'
+    selector_type: xpath
+    ark: 'K1'
+    desc: '点击[所属公司]'
+
+  - type: click
+    selector: '/html/body/*/div[1]/div[1]/ul/li/*[contains(text(), "{{company}}")]'
+
+    selector_type: xpath
+    mark: 'K2'
+    desc: '选择[所属公司]'
+
+  - type: click
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[5]/div[2]/div[2]/div/div/div/input'
+    selector_type: xpath
+    ark: 'K1'
+    desc: '点击[所属部门]'
+
+  - type: click
+    selector: '/html/body/*/div[1]/div[1]/ul/li/*[contains(text(), "{{department}}")]'
+    selector_type: xpath
+    mark: 'E3'
+    desc: '选择[所属部门]'
+
+  - type: click
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[5]/div[2]/div[3]/div/div/div/input'
+    selector_type: xpath
+    ark: 'K1'
+    desc: '点击[所属工种]'
+
+  - type: click
+    selector: '/html/body/*/div[1]/div[1]/ul/li/*[contains(text(), "{{personnelTypeDetail}}")]'
+
+    selector_type: xpath
+    mark: 'E3'
+    desc: '选择[所属工种]'
+
+  - type: runjs
+    script: document.evaluate('//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[6]/div[2]/button', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView();
+    
+    mark: 'H1'
+    desc: '转到合同区域'
+
+  - type: click
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[6]/div[2]/button'
+    selector_type: xpath
+    ark: 'H2'
+    desc: '点击新增合同'
+
+  - type: upload
+    selector: '/html/body/*/div/div[2]/form/div[2]/div[3]/div/div/div/div/div/div/input'
+
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\a.docx'
+    mark: 'H4'
+    desc: '上传合同文件'
+
+  - type: input
+    selector: '/html/body/*/div/div[2]/form/div[1]/div[1]/div/div/div[1]/input'
+    selector_type: xpath
+    text: '{{contractNumber}}'
+    mark: 'H5'
+    desc: '输入[合同编号]'
+
+  - type: input
+    selector: '/html/body/*/div/div[2]/form/div[1]/div[2]/div/div/div[1]/input'
+    selector_type: xpath
+    text: '{{dailyWage}}'
+    mark: 'H6'
+    desc: '输入[人员工资标准/天元]'
+
+  - type: runjs
+    script: document.evaluate('/html/body/*/div/div[2]/form/div[2]/div[1]/div/div/div/input', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.value = '{{contractStartDate}}'
+    mark: 'H7'
+    desc: '输入[合同开始时间]'
+
+  - type: runjs
+    script: document.evaluate('/html/body/*/div/div[2]/form/div[2]/div[2]/div/div/div/input', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.value = '{{contractEndDate}}'
+    mark: 'H8'
+    desc: '输入[合同结束时间]'
+
+  - type: click
+
+    selector: '/html/body/*/div/div[3]/div/button[1]'
+    selector_type: xpath
+    ark: 'H9'
+    desc: '点击[取消]合同区域的输入信息'
+
+  - type: runjs
+    script: document.evaluate('//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[8]/div[2]/button', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView();
+
+  - type: click
+    selector: '//*[@id="pane-1"]/div/div[5]/div/div[2]/div/div[1]/div/form/div[8]/div[2]/button'
+    selector_type: xpath
+    ark: 'H2'
+    desc: '点击新增证书'
+    
+  - type: input
+    selector: '/html/body/*/div/div[2]/form/div[1]/div[1]/div/div/div[1]/input'
+    selector_type: xpath
+    text: '{{specialWorkCertificateNumber}}'
+    mark: 'Z1'
+    desc: '输入[特种作业证书编号]'
+
+  - type: click
+    selector: '/html/body/*/div/div[2]/form/div[1]/div[2]/div/div/div/div/input'
+    selector_type: xpath
+    mark: 'Z2'
+    desc: '选择前准备'
+
+  - type: click
+    selector: '/html/body/*/div[1]/div[1]/ul/li/*[contains(text(), "{{specialWorkCertificateType}}")]'
+    selector_type: xpath
+    mark: 'Z3'
+    desc: '选择[特种作业证书类型]'
+
+  - type: runjs
+    script: document.evaluate('/html/body/*/div/div[2]/form/div[2]/div[1]/div/div/div/input', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.value = '{{certificateStartDate}}'
+    mark: 'Z4'
+    desc: '输入[证书开始时间]'
+
+  - type: runjs
+    script: document.evaluate('/html/body/*/div/div[2]/form/div[2]/div[2]/div/div/div/input', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.value = '{{certificateEndDate}}'
+    mark: 'Z5'
+    desc: '输入[证书结束时间]'
+
+  - type: upload
+    selector: '/html/body/*/div/div[2]/form/div[2]/div[3]/div/div/div/div/div/div/input'
+
+    selector_type: xpath
+    file: 'D:\workplace\project\new_auto_gate_machine\gonghui-rpa-flow\myrpa\data\uploads\a.docx'
+    mark: 'Z6'
+    desc: '上传证书附件'
+  #- type: click #点击[保存]证书区域的输入信息
+    #selector: '/html/body/div[4]/div/div[3]/div/button[2]/span'
+    #selector_type: xpath
+    #ark: 'H9'
+    #desc: '点击保存证书区域的输入信息'
