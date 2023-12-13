@@ -12,7 +12,7 @@ def _getData(mark):
         "sysLoginUrl": "https://gzsm.org.cn/js/a/login",
         "gateName": "广州市建设领域管理应用信息平台",
         "companyId": 1002352,
-        "password": "Aa123456*",
+        "password": "",
         "mainContractor": 1,
         "projectNo": "2305231750021897734",
         #"is_cron": False,
